@@ -1,0 +1,15 @@
+/* style.css No incluir tag <style> */
+body{
+    background-color: brown;
+}
+h1{
+    color: blue;
+    text-align: center;
+    text-decoration: underline;
+    font-family: monospace, 'Courier New', Courier;
+}
+p{
+    color: whitesmoke;
+    font-size: 30px;
+    text-align: justify;
+}
