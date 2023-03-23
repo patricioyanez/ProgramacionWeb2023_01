@@ -13,3 +13,15 @@ p{
     font-size: 30px;
     text-align: justify;
 }
+
+.pConBorde
+{
+    border-color: white ;
+    border-width: 2px;
+    border-style: solid;
+    padding-top: 50px;
+    padding-left: 100px;
+
+    margin-top: 150px;
+    margin-left: -150px;
+}
