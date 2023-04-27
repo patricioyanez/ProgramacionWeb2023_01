@@ -54,6 +54,11 @@ $(function()
             alert("Falta especificar el dv")
             $('.txtDv').focus();
         }
+        else if(! esValidoElRut($('.txtRut').val(),$('.txtDv').val()))
+        {
+            alert("El rut no es válido")
+            $('.txtRut').focus();
+        }
         else if(!$('.txtNombre').val())
         {
             alert("Falta especificar el nombre")
@@ -64,5 +69,27 @@ $(function()
             alert("Falta especificar el email")
             $('.txtEmail').focus();
         }
+        else if(! emailRegex.test($('.txtEmail').val()))
+        {
+            alert("El formato del correo no es válido")
+            $('.txtEmail').focus();
+        }
     })
+
+    function esValidoElRut(Rut,Digito)
+    {
+		let contador= Rut.length-1;
+		let factor  = 2;
+		let suma    = 0;
+		let caracter= 0;
+ 
+		for( ; contador>=0 ; contador--)
+		{
+			caracter = Rut.charAt(contador);
+			suma += (factor * caracter);
+			if (++factor > 7)
+				factor=2;		
+		}
+        return "-123456789K0".charAt(11-(suma % 11)) == Digito.toUpperCase();            
+    }  
 })
