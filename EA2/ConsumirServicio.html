@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumir API</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script>
+        $(function()
+        {
+            $(".btnListarCategorias").click(function()
+            {
+                $.get('https://www.themealdb.com/api/json/v1/1/categories.php',
+                function(data)
+                {
+                    let filas = '';
+                    $.each(data.categories, function(i, objeto)
+                    {
+                        filas += '<tr><td>' + objeto.idCategory +
+                                '<td><img src="' + objeto.strCategoryThumb + '">' +
+                                '<td>' + objeto.strCategory +
+                                '<td>' + objeto.strCategoryDescription +
+                                '</tr>';
+                    })
+                    $('.tblCategorias').append(filas);
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <button class="btnListarCategorias">Listar Categorias</button>
+    <br>
+    <table class="tblCategorias">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>imagen</th>
+                <th>Categoria</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+    </table>
+    
+    
+</body>
+</html>
