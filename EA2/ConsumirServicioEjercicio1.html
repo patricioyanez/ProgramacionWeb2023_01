@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumir API</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script>
+        $(function()
+        {
+            $(".btnVerIndicadores").click(function()
+            {
+                $.getJSON('https://mindicador.cl/api', 
+                function(data) {
+                   $('#txtUf').val(data.uf.valor)
+                   $('#txtFecha').val(data.fecha.substring(0,10))
+                   $('#txtDolar').val(data.dolar.valor)
+                   $('#txtUtm').val(data.utm.valor)
+                }).fail(function() {
+                    console.log('Error al consumir la API!');
+                });
+            })
+            // Ejercicios:
+            // 1. BUSCAR UN API QUE MUESTRE EL VALOR DE LA UF, DOLAR Y UTM
+            // 2. OTRA PARA EL TIEMPO(CLIMA) o convertir de $cl a $arg / EURO
+        })
+    </script>
+</head>
+<body>
+    <button class="btnVerIndicadores">Ver Indicadores</button><br>
+    
+    <table>
+        <tr>
+            <td>
+                <label for="txtFecha">Fecha</label>
+            <td>
+                <input type="date" name="txtFecha" id="txtFecha">
+        </tr>
+        <tr>
+            <td>
+                <label for="txtUf">Valor Uf</label>
+            <td>
+                <input id="txtUf" type="text" placeholder="Valor Uf" />
+        </tr>
+        <tr>
+            <td>
+                <label for="txtDolar">Dolar</label>
+            <td>
+                <input id="txtDolar" type="text" placeholder="Dolar" />
+        </tr>
+        <tr>
+            <td>
+                <label for="txtUtm">UTM</label>
+            <td>
+                <input id="txtUtm" type="text" placeholder="UTM" />
+        </tr>
+    </table>
+    
+
+</body>
+</html>
