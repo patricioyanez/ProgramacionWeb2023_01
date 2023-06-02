@@ -42,3 +42,4 @@ def marca(request):
                 context = {'error': 'Id no encontrado'}
             
     return render(request, 'marca.html', context)
+    ## Ejercicio: CREAR CRUD para GENERO
