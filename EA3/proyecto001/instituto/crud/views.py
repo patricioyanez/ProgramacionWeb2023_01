@@ -33,5 +33,12 @@ def marca(request):
                 context = {'item': item}
             except:
                 context = {'error': 'Id no encontrado'}
+        elif 'Eliminar' in request.POST:
+            try:
+                item = Marca.objects.get(pk = id)
+                item.delete()
+                context = {'exito': 'Valor eliminado'}
+            except:
+                context = {'error': 'Id no encontrado'}
             
     return render(request, 'marca.html', context)
