@@ -18,14 +18,20 @@ def marca(request):
                 context = {'exito': 'Datos guardados'}
             else: # update
                 try:
-                    item = Marca.objects.get(id = id)
+                    item = Marca.objects.get(pk = id)
                     item.nombre = nombre
                     item.activo = activo
                     item.save()
                     context = {'exito': 'Datos modificados'}
                 except:
                     context = {'error': 'Id no encontrado'}
-        if 'Listar' in request.POST: 
+        elif 'Listar' in request.POST: 
             context['listado'] = Marca.objects.all() # select * from marca
-
+        elif 'Buscar' in request.POST:
+            try:
+                item = Marca.objects.get(pk = id)
+                context = {'item': item}
+            except:
+                context = {'error': 'Id no encontrado'}
+            
     return render(request, 'marca.html', context)
