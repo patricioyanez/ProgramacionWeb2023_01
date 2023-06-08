@@ -2,7 +2,21 @@
 {# para realizar comentarios #}
 {% block tituloPestana %} Administración de Género{% endblock %}
 {% block titulo %} Género {% endblock %}
-{% block mensaje %}{% endblock %}
+{% block mensaje %}
+    {% if exito %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ exito }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endif %}
+    {% if error %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ error }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endif %}
+
+{% endblock %}
 {% block contenido %}
 <form method="POST" action="{% url 'genero' %}">
     {% csrf_token %} 
