@@ -1,6 +1,22 @@
 from django.shortcuts import render
 from .models import Marca, Categoria, Genero
 # Create your views here.
+# importar Forms de django
+from .forms import ClienteForm
+
+def clienteForm(request):
+    context = {'form': ClienteForm()}
+    if request.method == 'POST':
+        if 'Grabar' in request.POST:
+            form = ClienteForm(request.POST)
+            if form.is_valid():
+                form.save()
+                context['exito'] = 'Los datos fueron guardados'
+            else:
+                context['error'] = 'Los datos no fueron guardados'
+    
+
+    return render(request, 'clienteForm.html', context)
 
 def categoria(request):
     context = {}
@@ -83,7 +99,6 @@ def genero(request):
                 context = {'error': 'Id no encontrado'}
             
     return render(request, 'genero.html', context)
-
 
 def marca(request):
     context = {}
