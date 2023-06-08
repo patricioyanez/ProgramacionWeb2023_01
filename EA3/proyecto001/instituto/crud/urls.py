@@ -10,3 +10,6 @@ urlpatterns = [
 ]
 # 127.0.0.1:8000/crud/marca
 # 127.0.0.1:8000/crud/genero
+
+# Ejercicio: Definir el modelo Producto, migrarlo y 
+# crear para este modelo el Django Forms. Incluirlo en el menú
