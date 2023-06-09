@@ -4,9 +4,14 @@ from .models import Marca, Categoria, Genero
 # importar Forms de django
 from .forms import ClienteForm
 
+# importar decoradores
+from django.contrib.auth.decorators import login_required
+
+@login_required
 def menu(request):
     return render(request, 'menu.html')
 
+@login_required
 def clienteForm(request):
     context = {'form': ClienteForm()}
     if request.method == 'POST':
@@ -21,6 +26,7 @@ def clienteForm(request):
 
     return render(request, 'clienteForm.html', context)
 
+@login_required
 def categoria(request):
     context = {}
 
@@ -62,6 +68,7 @@ def categoria(request):
             
     return render(request, 'categoria.html', context)
 
+@login_required
 def genero(request):
     context = {}
 
@@ -103,6 +110,7 @@ def genero(request):
             
     return render(request, 'genero.html', context)
 
+@login_required
 def marca(request):
     context = {}
 
