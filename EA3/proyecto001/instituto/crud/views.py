@@ -4,6 +4,9 @@ from .models import Marca, Categoria, Genero
 # importar Forms de django
 from .forms import ClienteForm
 
+def menu(request):
+    return render(request, 'menu.html')
+
 def clienteForm(request):
     context = {'form': ClienteForm()}
     if request.method == 'POST':
